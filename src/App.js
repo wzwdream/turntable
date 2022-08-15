@@ -46,6 +46,7 @@ class App extends Component {
     })
   }
 
+  // 获取食物列表
   getList() {
     localStorage.setItem('meatFood',JSON.stringify(this.meatFood))
     const meatFood = localStorage.getItem('meatFood')
