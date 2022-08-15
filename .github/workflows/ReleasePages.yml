@@ -3,7 +3,7 @@ name: ReleasePages
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   build-and-deploy:
     concurrency: ci-${{ github.ref }}
