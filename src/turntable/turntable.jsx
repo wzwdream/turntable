@@ -6,7 +6,7 @@ export default class Turntable {
     this.startRadian = 0
     this.canBeClick = true
     this.awards = options.awards
-    this.that = options.that
+    this.selectedFood = options.selectedFood
     this.food = ''
   }
   getLineTextList(context, text, maxLineWidth) {
@@ -135,7 +135,7 @@ export default class Turntable {
     this.startRadian += changeRadian
     if (distance - this.startRadian <= 0.05) {
       this.canBeClick = true;
-      this.that.selectedFood(this.food)
+      this.selectedFood(this.food)
       return
     }
     this.render()

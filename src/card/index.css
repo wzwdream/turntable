@@ -1,0 +1,153 @@
+/* From uiverse.io by @EmmaxPlay */
+.card {
+    width: 330px;
+    height: 500px;
+    margin: 0 auto;
+    background-color: #F8FBFE;
+    border-radius: 8px;
+    z-index: 1;
+    position: absolute;
+    top: 148px;
+    left: 24px;
+}
+
+.cardTitle {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+.titleText {
+    margin-right: 25px;
+}
+.tools {
+    display: flex;
+    align-items: center;
+}
+
+.circle {
+    padding: 0 4px;
+}
+
+.box1 {
+    display: inline-block;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    padding: 1px;
+    border-radius: 50%;
+}
+
+.red {
+    background-color: #ff605c;
+}
+
+.yellow {
+    background-color: #ffbd44;
+}
+
+.green {
+    background-color: #00ca4e;
+}
+
+
+.right_x {
+    display: inline-block;
+    width: 18px;
+    height: 3px;
+    background: #999;
+    line-height: 0;
+    font-size: 0;
+    vertical-align: middle;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.right_x:after {
+    content: "/";
+    display: block;
+    width: 18px;
+    height: 3px;
+    background: #999;
+    transform: rotate(-90deg);
+}
+
+.card__content {
+    width: 100%;
+    height: calc(100% - 44px);
+    overflow-y: hidden;
+    text-align: center;
+}
+.content_box {
+    width: 100%;
+    padding-top: 20px;
+    height: calc(100% - 52px);
+    overflow-y: auto;
+}
+.content_header {
+    display: flex;
+    justify-content: center;
+}
+
+/* 整个滚动条 */
+::-webkit-scrollbar {
+    /* 对应纵向滚动条的宽度 */
+    width: 6px;
+    /* 对应横向滚动条的宽度 */
+    height: 10px;
+}
+
+/* 滚动条上的滚动滑块 */
+::-webkit-scrollbar-thumb {
+    background-color: rgba(144, 147, 153, 0.2);
+    border-radius: 32px;
+}
+
+/* 滚动条轨道 */
+::-webkit-scrollbar-track {
+    background-color: rgba(144, 147, 153, 0.2);
+    border-radius: 32px;
+}
+
+/* From uiverse.io by @alexruix */
+/* From uiverse.io by @alexruix */
+.input {
+    width: 200px;
+    line-height: 28px;
+    border: 2px solid transparent;
+    border-bottom-color: #777;
+    padding: 0 5px;
+    outline: none;
+    background-color: transparent;
+    color: #0d0c22;
+    transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.input:focus,
+input:hover {
+    outline: none;
+    border-radius: 10px;
+    border-color: #7a9cc6;
+}
+
+.input::placeholder {
+    color: #777;
+}
+
+.input:focus::placeholder {
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.addBtn {
+    outline: none;
+    border-radius: 5px;
+    border-color: lightsteelblue;
+}
+
+.contentRow {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px dotted #e8e8e8;
+}
