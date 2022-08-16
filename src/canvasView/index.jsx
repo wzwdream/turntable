@@ -1,25 +1,23 @@
-import React, { useEffect, useRef } from 'react'
-import Turntable from '../turntable/turntable'
+import React, { useRef, useEffect } from 'react'
+import { getTurntable } from '../turntable/turntable'
 function CanvasView(props) {
     const canvasElem = useRef(null)
-    const changFood = (food, foodList) => {
-        selectedFood('')
-        // const foodList = food === 'meatFood' ? meatFood : food === 'vegetablesFood' ? vegetablesFood : soupFood
+    const changFood = (foodList) => {
         const canvas = canvasElem.current
         const context = canvas.getContext('2d')
+        context.clearRect(0, 0, canvas.width, canvas.height)
         canvas.width = 300
         canvas.height = 300
-        const turntable = new Turntable({ canvas: canvas, context: context, awards: foodList, selectedFood: selectedFood })
+        let turntable = getTurntable({ canvas: canvas, context: context, awards: foodList, selectedFood: selectedFood })
         turntable.startRotate()
     }
-    const selectedFood = (food) => {
-        props.selectedFood(food)
+    const selectedFood = (foodName) => {
+        props.selectedFood(foodName)
     }
 
     useEffect(() => {
-        // getList()
-        changFood(props.food, props.foodList)
-    }, [props.food, props.foodList])
+        changFood(props.foodList)
+    }, [props.foodList])
     return (
         <canvas ref={canvasElem} className='canvas'></canvas>
     )

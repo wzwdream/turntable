@@ -34,14 +34,16 @@ class App extends Component {
     this.getList = this.getList.bind(this)
   }
   changFood(food) {
+    const foodList = this[food]
     this.setState({
       food: food,
-      foodList: this[food]
+      foodList: foodList
     })
   }
-  selectedFood(food) {
+  selectedFood(foodName) {
+    const food = this.state.food
     this.setState({
-      selecteFood: food
+      selecteFood: this[food][foodName].name
     })
   }
   // 添加菜品
@@ -50,10 +52,11 @@ class App extends Component {
       const { foodList, food } = this.state
       const len = foodList.length
       foodList.push({
-        level: 1 + parseInt(foodList[len - 1].level),
+        level: len === 0 ? '1' : 1 + parseInt(foodList[len - 1].level),
         name: foodName
       })
       this[food] = foodList
+      this.changFood(food)
       localStorage.setItem(food,JSON.stringify(foodList))
     }
   }
@@ -61,10 +64,8 @@ class App extends Component {
   deeteFood(index) {
     const { foodList, food } = this.state
     foodList.splice(index, 1)
-    this.setState({
-      foodList: foodList
-    })
     this[food] = foodList
+    this.changFood(food)
     localStorage.setItem(food,JSON.stringify(foodList))
   }
   // 获取食物列表
@@ -81,7 +82,8 @@ class App extends Component {
   }
   closeList() {
     this.setState({
-      isShow: !this.state.isShow
+      isShow: !this.state.isShow,
+      foodList: JSON.parse(localStorage.getItem(this.state.food))
     })
   }
 
@@ -111,7 +113,7 @@ class App extends Component {
         <span>选中的食物：{this.state.selecteFood}</span>
       </div>
       <div className='box'>
-        <CanvasView food={this.state.food} foodList={this.state.foodList} selectedFood={this.selectedFood} />
+        <CanvasView foodList={this.state.foodList} selectedFood={this.selectedFood} />
       </div>
       <Card isShow={this.state.isShow} food={this.state.food} foodList={this.state.foodList} addFood={this.addFood} deeteFood={this.deeteFood} closeList={this.closeList} />
     </div>

@@ -1,5 +1,5 @@
 // 转盘类
-export default class Turntable {
+class Turntable {
   constructor(options) {
     this.canvas = options.canvas
     this.context = options.context
@@ -106,7 +106,7 @@ export default class Turntable {
     const canvas = this.canvas
     const context = this.context
     const canvasStyle = canvas.getAttribute('style');
-    this.render()
+    this.init()
     canvas.addEventListener('mousedown', e => {
       if (!this.canBeClick) return
       this.canBeClick = false
@@ -138,7 +138,7 @@ export default class Turntable {
       this.selectedFood(this.food)
       return
     }
-    this.render()
+    this.init()
     window.requestAnimationFrame(this.rotatePanel.bind(this, distance));
   }
   distanceToStop() {
@@ -148,16 +148,34 @@ export default class Turntable {
       return awardRadian * index + (awardRadian * (index + 1) - awardRadian * index) / 2
     });
     const currentPrizeIndex = Math.floor(Math.random() * this.awards.length)
-    this.food = this.awards[currentPrizeIndex].name
+    this.food = currentPrizeIndex
     middleDegrees = awardsToDegreesList[currentPrizeIndex];
     distance = Math.PI * 3 / 2 - middleDegrees
     distance = distance > 0 ? distance : Math.PI * 2 + distance
     return distance + Math.PI * 10;
   };
-  render() {
+  init() {
     this.drawPanel()
     this.drawPrizeBlock()
     this.drawButton()
     this.drawArrow()
   }
+  changeAwards(awards) {
+    this.awards = awards
+  }
+}
+
+let turntable
+
+const getTurntable = (options) => {
+  if(turntable) {
+    turntable.changeAwards(options.awards)
+  } else {
+    turntable = new Turntable(options)
+  }
+  return turntable
+}
+
+export {
+  getTurntable
 }

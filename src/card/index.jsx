@@ -6,6 +6,9 @@ function Card(props) {
         props.addFood(foodName)
         setFoodName('')
     }
+    const colorChange = color => {
+        console.log(color.target.value)
+    }
     return (
         <div className="card" style={!props.isShow ? { display: 'none' } : {}}>
             <div className='cardTitle'>
@@ -22,6 +25,9 @@ function Card(props) {
                 </div>
                 <span className='titleText'>{props.food === 'meatFood' ? '荤菜' : props.food === 'vegetablesFood' ? '素菜' : '汤'}</span>
                 <span className='right_x' onClick={props.closeList}></span>
+            </div>
+            <div>
+                <input type="color" onChange={colorChange} />
             </div>
             <div className="card__content">
                 <div className='content_header'>
