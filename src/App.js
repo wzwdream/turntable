@@ -31,6 +31,7 @@ class App extends Component {
     this.changFood = this.changFood.bind(this)
     this.addFood = this.addFood.bind(this)
     this.deeteFood = this.deeteFood.bind(this)
+    this.getList = this.getList.bind(this)
   }
   changFood(food) {
     this.setState({
@@ -68,15 +69,18 @@ class App extends Component {
   }
   // 获取食物列表
   getList() {
+    console.log('=======localStoreage', localStorage)
     const meatFood = localStorage.getItem('meatFood')
     const vegetablesFood = localStorage.getItem('vegetablesFood')
     const soupFood = localStorage.getItem('soupFood')
     meatFood ? this.meatFood = JSON.parse(localStorage.getItem('meatFood')) : localStorage.setItem('meatFood',JSON.stringify(this.meatFood))
     vegetablesFood ? this.vegetablesFood = JSON.parse(localStorage.getItem('vegetablesFood')) : localStorage.setItem('vegetablesFood',JSON.stringify(this.vegetablesFood))
     soupFood ? this.soupFood = JSON.parse(localStorage.getItem('soupFood')) : localStorage.setItem('soupFood',JSON.stringify(this.soupFood))
+    console.log('1111111111')
     this.setState({
       foodList: this.meatFood
     })
+    console.log('22222222222')
   }
   closeList() {
     this.setState({
@@ -86,6 +90,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getList()
+    console.log('-----------初始化')
   }
   render() {
     return <div className='container'>
