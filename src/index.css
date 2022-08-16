@@ -30,6 +30,7 @@ html {
   height: 100%;
   transform: scale(1);
   background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  /* background-image: url('./asset/bg.jpg'); */
   background-size: 100% 100%;
 }
 

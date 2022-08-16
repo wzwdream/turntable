@@ -69,18 +69,15 @@ class App extends Component {
   }
   // 获取食物列表
   getList() {
-    console.log('=======localStoreage', localStorage)
     const meatFood = localStorage.getItem('meatFood')
     const vegetablesFood = localStorage.getItem('vegetablesFood')
     const soupFood = localStorage.getItem('soupFood')
     meatFood ? this.meatFood = JSON.parse(localStorage.getItem('meatFood')) : localStorage.setItem('meatFood',JSON.stringify(this.meatFood))
     vegetablesFood ? this.vegetablesFood = JSON.parse(localStorage.getItem('vegetablesFood')) : localStorage.setItem('vegetablesFood',JSON.stringify(this.vegetablesFood))
     soupFood ? this.soupFood = JSON.parse(localStorage.getItem('soupFood')) : localStorage.setItem('soupFood',JSON.stringify(this.soupFood))
-    console.log('1111111111')
     this.setState({
       foodList: this.meatFood
     })
-    console.log('22222222222')
   }
   closeList() {
     this.setState({
@@ -90,7 +87,6 @@ class App extends Component {
 
   componentDidMount() {
     this.getList()
-    console.log('-----------初始化')
   }
   render() {
     return <div className='container'>
@@ -99,7 +95,7 @@ class App extends Component {
         <span className='addIcon' onClick={this.closeList}>
           {
             !this.state.isShow ? <>
-              <svg t="1660620041792" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4016" width="32" height="32"><path d="M511.984 64C264.976 64 64 264.96 64 512.016 64 759.024 264.976 960 511.984 960 759.056 960 960 759.024 960 512.016 960 264.944 759.024 64 511.984 64z" fill="#FFBD27" p-id="4017"></path><path d="M695.76 552.16h-143.616v143.536A40.224 40.224 0 0 1 512 735.936a40.256 40.256 0 0 1-40.128-40.24v-143.52h-143.632a40.208 40.208 0 1 1 0-80.4h143.632v-143.584a40.16 40.16 0 1 1 80.288 0v143.568h143.616a40.208 40.208 0 1 1 0 80.416z" fill="#333333" p-id="4018"></path></svg>
+              <svg t="1660620041792" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4016" width="32" height="32"><path d="M511.984 64C264.976 64 64 264.96 64 512.016 64 759.024 264.976 960 511.984 960 759.056 960 960 759.024 960 512.016 960 264.944 759.024 64 511.984 64z" fill="#FFBD27" p-id="4017"></path><path d="M695.76 552.16h-143.616v143.536A40.224 40.224 0 0 1 512 735.936a40.256 40.256 0 0 1-40.128-40.24v-143.52h-143.632a40.208 40.208 0 1 1 0-80.4h143.632v-143.584a40.16 40.16 0 1 1 80.288 0v143.568h143.616a40.208 40.208 0 1 1 0 80.416z" fill="#333333" p-id="4018"></path></svg>
               添加
             </>
             : <span>取消</span>
